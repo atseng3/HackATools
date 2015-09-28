@@ -1,8 +1,8 @@
 Hackatools::Application.routes.draw do
-  resources :reviews, except: [:show, :index]
-
   devise_for :users
-  resources :products
+  resources :products do 
+    resources :reviews, except: [:show, :index]  
+  end
 
   get "pages/about"
   get "pages/contact"
