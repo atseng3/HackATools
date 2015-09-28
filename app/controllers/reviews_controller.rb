@@ -4,17 +4,6 @@ class ReviewsController < ApplicationController
   before_action :authenticate_user!
   # before_action :check_user, only: [:edit, :update, :destroy]
 
-  # GET /reviews
-  # GET /reviews.json
-  def index
-    @reviews = Review.all
-  end
-
-  # GET /reviews/1
-  # GET /reviews/1.json
-  def show
-  end
-
   # GET /reviews/new
   def new
     @review = Review.new
@@ -32,11 +21,11 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       if @review.save
-        format.html { redirect_to @review, notice: 'Review was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @review }
+        format.html { redirect_to root_path, notice: 'Review was successfully created.' }
+        # format.json { render action: 'show', status: :created, location: @review }
       else
         format.html { render action: 'new' }
-        format.json { render json: @review.errors, status: :unprocessable_entity }
+        # format.json { render json: @review.errors, status: :unprocessable_entity }
       end
     end
   end
