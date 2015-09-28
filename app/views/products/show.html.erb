@@ -60,3 +60,12 @@
 <%= link_to 'Back', products_path, class: 'btn btn-link' %>
 
 
+<script>
+	$('.star-rating').raty({
+		path: 'https://s3.amazonaws.com/hackatools/stars',
+		readOnly: true,
+		score: function() {
+			return $(this).attr('data-score');
+		}
+	});
+</script>
