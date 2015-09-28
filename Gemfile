@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.2'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'sqlite3', group: :development
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -27,10 +27,31 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+# Image uploading gem
+gem 'carrierwave'
+
+# Using Amazon S3 
+gem 'fog'
+
+# To hide amazon keys
+gem 'figaro'
+
+# Resize Images
+gem 'mini_magick'
+
+# Users
+gem 'devise'
+
+# For Search, from Instacart
+gem 'searchkick'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
+
+gem 'rails_12factor', group: :production
+gem 'pg', group: :production
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
@@ -42,4 +63,9 @@ end
 # gem 'capistrano', group: :development
 
 # Use debugger
-# gem 'debugger', group: [:development, :test]
+group :development do
+	gem 'debugger'
+	gem 'better_errors'
+	gem 'binding_of_caller'
+end
+
