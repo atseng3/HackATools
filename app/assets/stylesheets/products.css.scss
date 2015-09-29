@@ -24,7 +24,7 @@
       font-weight: bold;
     }
     .navbar-brand {
-        font-size: 30px;
+      font-size: 30px;
     }
   }
 }
@@ -34,7 +34,14 @@
 
 ///////////
 
-@media (min-width: 736px) {
+.stars-container {
+  padding: 0px 0px 10px 10px;
+}
+.star-rating {
+  display: inline-block;
+}
+
+// @media (min-width: 736px) {
   .items-row {
     margin-bottom: 30px;
   }
@@ -45,8 +52,9 @@
   }
   a.item {
     margin-right: 30px;
+    margin-bottom: 30px;
     width: 290px;
-    height: 290px;
+    // height: 290px;
     display: inline-block;
     text-align: left;
     border: 1px solid #CCC;
@@ -86,5 +94,4 @@
       margin: auto;
     }
   }
-
-}
+// }
