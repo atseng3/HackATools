@@ -7,4 +7,14 @@ class Product < ActiveRecord::Base
 	validates :name, :website, presence: true
 	validates :website, format: { with: /\Ahttps?:\/\/.*\z/,
 	  message: "must start with http:// or https://" }
+
+	def avg_rating
+		reviews = Review.where(product_id: self.id).order('created_at DESC')
+    if reviews.blank?
+      rating = 0
+    else
+      rating = reviews.average(:rating).round(2)
+    end
+    rating
+	end
 end
