@@ -5,7 +5,8 @@
 		  <strong>Name:</strong>
 		  <%= @product.name %>
 		</p>
-
+		<div class="star-rating" data-score= <%= @avg_rating %> ></div>
+		<p><%= "#{@reviews.length} reviews" %></p>
 		<p>
 		  <strong>Website:</strong>
 		  <%= @product.website %>
