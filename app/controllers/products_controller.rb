@@ -69,6 +69,14 @@ class ProductsController < ApplicationController
     end
   end
 
+  def search
+    if params[:search].present?
+      @products = Product.search(params[:search], fields: [{name: :word_start}])
+    else
+      @products = Product.all
+    end
+  end
+
   private
 
     def check_user
