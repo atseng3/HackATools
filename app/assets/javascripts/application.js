@@ -14,4 +14,6 @@
 //= require jquery_ujs
 //= require jquery.raty
 //= require turbolinks
+//= require pen/pen
+//= require pen/markdown
 //= require_tree .

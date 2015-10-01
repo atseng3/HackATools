@@ -1,64 +1,81 @@
-<div class="row">
-	<div class="col-md-3">
-		<%= image_tag @product.image_url %>
-		<p>
-		  <strong>Name:</strong>
-		  <%= @product.name %>
-		</p>
+<div class="product-hdr">
+	<a href=<%= @product.website %> class="item">
+		<div class="item__logo">
+			<%= image_tag @product.image_url %>
+		</div>
+	</a>
+	
+	<p class="product__description"><%= @product.description %></p>
+	<div class="col-md-6">
+		Ease of becoming master at <%= @product.name %>: 
 		<div class="star-rating" data-score= <%= @avg_rating %> ></div>
-		<p><%= "#{@reviews.length} reviews" %></p>
-		<p>
-		  <strong>Website:</strong>
-		  <%= @product.website %>
-		</p>
-
-		<p>
-		  <strong>Description:</strong>
-		  <%= @product.description %>
-		</p>
 	</div>
-	<div class="col-md-9">
-		<% if @reviews.blank? %>
-			<h3>No reviews yet. Be the first one to write one!</h3>
-		<% else %>
-			<table class="table">
-				<thead>
-				  <tr>
-				    <th class="col-md-3"></th>
-				    <th class="col-md-9"></th>
-				  </tr>
-				</thead>
-				<tbody>
-					<% @reviews.each do |review| %>
-						<tr>
-							<td>
-								<h4>
-								  <%= "#{review.user.email}" %>
-								</h4>
-								<p><%= review.created_at.strftime('%-m/%-d/%-y') %></p>
-							</td>
-							<td>
-								<div class="star-rating" data-score=<%= review.rating %>></div>
-								<p><%= h(review.comment).gsub(/\n/, '<br/>').html_safe %></p>
-								<% if user_signed_in? %>
-									<% if (review.user == current_user) || (current_user.admin?) %>
-										<%= link_to 'Edit', edit_product_review_path(@product, review) %>
-										<%= link_to 'Delete', product_review_path(@product, review), method: :delete %>
-										<% end %>
-								<% end %>
-							</td>
-						</tr>
-					<% end %>
-				</tbody>
-			</table>
-		<% end %>
+	<div class="col-md-6">
+		Speed for producing awesomeness: 
+		<div class="star-rating" data-score= <%= @avg_rating %> ></div>
+	</div>
+	<div class="product-rating">
+		Overall Rating: 
+		<div class="star-rating" data-score= <%= @avg_rating %> ></div>
+		   <%= "#{@reviews.length} reviews" %>
 	</div>
 </div>
 
+<div class="container-fluid">
+<div class="row hidden">
+	<%= link_to "Write Review", new_product_review_path(@product), class: "btn btn-primary" %>
+	<%= link_to 'Edit', edit_product_path(@product), class: 'btn btn-link' %> |
+	<%= link_to 'Back', products_path, class: 'btn btn-link' %>
+</div>
 
-<%= link_to "Write Review", new_product_review_path(@product), class: "btn btn-primary" %>
-<%= link_to 'Edit', edit_product_path(@product), class: 'btn btn-link' %> |
-<%= link_to 'Back', products_path, class: 'btn btn-link' %>
+<!-- <div class="row">
+<h2>Similar/Alternatives</h2>
+</div>
+
+<div class="row">
+<h2>Works best with</h2>
+</div>
+
+<div class="row">
+<h2>Learn <%= @product.name %></h2>
+</div> -->
+
+<div class="row">
+	<% if @reviews.blank? %>
+		<h3>No reviews yet. Be the first one to write one!</h3>
+		<%= render 'review_form' %>
+	<% else  %>
+		<%= render 'review_form' %>
+		<table class="table">
+			<thead>
+				<tr>
+					<th class="col-md-3"></th>
+					<th class="col-md-9"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @reviews.each do |review| %>
+					<tr>
+						<td>
+							<h4><%= "#{review.user.email}" %></h4>
+							<p><%= review.created_at.strftime('%-m/%-d/%-y') %></p>
+						</td>
+						<td>
+							<div class="star-rating" data-score=<%= review.rating %> ></div>
+							<p><%= h(review.comment).gsub(/\n/, '<br/>').html_safe %></p>
+							<% if user_signed_in? %>
+								<% if (review.user == current_user) || (current_user.admin?) %>
+									<%= link_to 'Edit', edit_product_review_path(@product, review) %>
+									<%= link_to 'Delete', product_review_path(@product, review), method: :delete %>
+								<% end %>
+							<% end %>
+						</td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	<% end %>
+</div>
 
 
 <script>
@@ -69,4 +86,8 @@
 			return $(this).attr('data-score');
 		}
 	});
+	$('.new-review__star').raty({
+    path: 'https://s3.amazonaws.com/yelpdemo/stars',
+    scoreName: 'review[rating]'
+  });
 </script>

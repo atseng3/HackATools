@@ -5,3 +5,22 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+require 'csv'
+# file=File.open("input_file", "r:ISO-8859-1")
+csv_text = File.open('./db/sample_result.csv', "r:ISO-8859-1")
+csv = CSV.parse(csv_text, :headers => true)
+csv.each do |row| 
+	# @product = Product.new()
+	# @product.name = row[0]
+	# @product.website = row[1]
+	# @product.description = row[2]
+	# @product.save!
+	Product.create!(row.to_hash)
+end
+# CSV.foreach("./db/sample_result.csv") do |row|
+	# @product = Product.new()
+	# @product.name = row[0]
+	# @product.website = row[1]
+	# @product.description = row[2]
+	# @product.save!
+# end

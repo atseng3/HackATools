@@ -15,9 +15,13 @@
       color: #c41200;
       font-weight: bold;
 	}
+  .new-review__star {
+    display: inline-block;
+  }
 }
 
 .navbar-default {
+  margin-bottom: 0px;
   .container-fluid {
     .navbar-nav > li > a {
       font-size: 16px;
@@ -95,3 +99,34 @@
     }
   }
 // }
+
+/* Rectangle 141: */
+
+
+
+.product-hdr {
+  
+  padding: 30px;
+  // overlay not working
+  background-color: rgba(0,0,0,0.30);
+  background-image: linear-gradient(-157deg, #FFFFFF 0%, #6863A7 38%);
+  text-align: center;
+  color: white;
+  font-size: 22px;
+}
+
+.product__description {
+  margin-bottom: 30px;
+}
+
+.product-rating {
+  // margin: 30px 0px;
+}
+
+.col-md-6 {
+  margin-bottom: 30px;
+}
+
+.star-rating {
+  display: inline-block;
+}

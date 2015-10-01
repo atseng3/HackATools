@@ -1,0 +1,9 @@
+<h1>User Profile Page</h1>
+
+<%= current_user.email %>
+
+<ul>
+<% @reviews.each do |review| %>
+	<li><%= review.product.name %>: <%= review.comment %></li>
+<% end %>
+</ul>
