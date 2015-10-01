@@ -15,8 +15,12 @@ class ProductsController < ApplicationController
     @review = Review.new
     @reviews = Review.where(product_id: @product.id).order('created_at DESC')
     if @reviews.blank?
+      @ease_rating = 0
+      @speed_rating = 0
       @avg_rating = 0
     else
+      @ease_rating = @reviews.average(:ease_of_use_rating).round(2)
+      @speed_rating = @reviews.average(:speed_of_dev_rating).round(2)
       @avg_rating = @reviews.average(:rating).round(2)
     end
   end

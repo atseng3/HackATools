@@ -8,15 +8,15 @@
 	<p class="product__description"><%= @product.description %></p>
 	<div class="col-md-6">
 		Ease of becoming master at <%= @product.name %>: 
-		<div class="star-rating" data-score= <%= @avg_rating %> ></div>
+		<div class="rating-readonly" data-score= <%= @ease_rating %> ></div>
 	</div>
 	<div class="col-md-6">
 		Speed for producing awesomeness: 
-		<div class="star-rating" data-score= <%= @avg_rating %> ></div>
+		<div class="rating-readonly" data-score= <%= @speed_rating %> ></div>
 	</div>
 	<div class="product-rating">
 		Overall Rating: 
-		<div class="star-rating" data-score= <%= @avg_rating %> ></div>
+		<div class="rating-readonly" data-score= <%= @avg_rating %> ></div>
 		   <%= "#{@reviews.length} reviews" %>
 	</div>
 </div>
@@ -61,7 +61,14 @@
 							<p><%= review.created_at.strftime('%-m/%-d/%-y') %></p>
 						</td>
 						<td>
-							<div class="star-rating" data-score=<%= review.rating %> ></div>
+							<div class="rating-type">
+								Easy to master: 
+								<div class="rating-readonly" data-score=<%= review.ease_of_use_rating %> ></div>
+							</div>
+							<div class="rating-type">
+								Speed of development: 
+								<div class="rating-readonly" data-score=<%= review.speed_of_dev_rating %> ></div>
+							</div>
 							<p><%= h(review.comment).gsub(/\n/, '<br/>').html_safe %></p>
 							<% if user_signed_in? %>
 								<% if (review.user == current_user) || (current_user.admin?) %>
@@ -79,15 +86,19 @@
 
 
 <script>
-	$('.star-rating').raty({
+	$('.rating-readonly').raty({
 		path: 'https://s3.amazonaws.com/hackatools/stars',
 		readOnly: true,
 		score: function() {
 			return $(this).attr('data-score');
 		}
 	});
-	$('.new-review__star').raty({
+	$('.rating-write__ease').raty({
     path: 'https://s3.amazonaws.com/yelpdemo/stars',
-    scoreName: 'review[rating]'
+    scoreName: 'review[ease_of_use_rating]'
+  });
+  $('.rating-write__speed').raty({
+    path: 'https://s3.amazonaws.com/yelpdemo/stars',
+    scoreName: 'review[speed_of_dev_rating]'
   });
 </script>
