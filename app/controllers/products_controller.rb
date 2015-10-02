@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show, :search]
-  before_action :check_user, except: [:index, :show, :search]
+  before_action :authenticate_user!, except: [:index, :show, :search, :tag]
+  before_action :check_user, except: [:index, :show, :search, :tag]
 
   # GET /products
   # GET /products.json
@@ -14,6 +14,7 @@ class ProductsController < ApplicationController
   def show
     @review = Review.new
     @reviews = Review.where(product_id: @product.id).order('created_at DESC')
+    @tags = @product.tag_list
     if @reviews.blank?
       @ease_rating = 0
       @speed_rating = 0
@@ -37,6 +38,8 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
+    product_params['tag_list'] = format_tags(product_params['tag_list'])
+    fail
     @product = Product.new(product_params)
 
     respond_to do |format|
@@ -82,6 +85,16 @@ class ProductsController < ApplicationController
     end
   end
 
+  def tag
+    if params[:tag].present?
+      @tag = CGI.unescape(params[:tag])
+      @products = Product.tagged_with(@tag)
+    else
+      @tag = nil
+      @product = Product.new
+    end
+  end
+
   private
 
     def check_user
@@ -95,8 +108,13 @@ class ProductsController < ApplicationController
       @product = Product.find(params[:id])
     end
 
+    def format_tags(tag_list)
+      results = tag_list.split(/,/)
+      return results.map {|result| result.strip }
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :website, :description, :image)
+      params.require(:product).permit(:name, :website, :description, :image, :tag_list)
     end
 end

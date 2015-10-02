@@ -3,9 +3,12 @@ Hackatools::Application.routes.draw do
   resources :products do 
     collection do
       get 'search'
+      get 'tag/:tag', to: 'products#tag'
     end
     resources :reviews, except: [:show, :index]  
   end
+
+  # get '/products/tag/:tag', to: 'products#tag'
 
   get "pages/about"
   get "pages/contact"

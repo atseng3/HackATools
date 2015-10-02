@@ -15,9 +15,14 @@
 		<div class="rating-readonly" data-score= <%= @speed_rating %> ></div>
 	</div>
 	<div class="product-rating">
-		Overall Rating: 
-		<div class="rating-readonly" data-score= <%= @avg_rating %> ></div>
+		<!-- Overall Rating:  -->
+		<!-- <div class="rating-readonly" data-score= <%= @avg_rating %> ></div> -->
 		   <%= "#{@reviews.length} reviews" %>
+	</div>
+	<div class="tags-container">
+		<% @tags.each do |tag| %>
+			<a href=<%= "/products/tag/#{CGI.escape tag}" %> class="tag"><%= tag %></a>
+		<% end %>
 	</div>
 </div>
 

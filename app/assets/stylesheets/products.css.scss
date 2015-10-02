@@ -166,6 +166,20 @@ a.item:nth-child(3n+3) {
   margin-right: 20px;
 }
 
+.tags-container {
+  margin: 20px 0px;
+}
+.tag {
+  background: white;
+  border-radius: 150px;
+  display: inline-block;
+  color: #333;
+  padding: 5px 15px;
+  font-size: 16px;
+  border: 1px solid #333;
+  margin: 20px 5px;
+}
+
 
 
 

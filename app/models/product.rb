@@ -1,5 +1,7 @@
 class Product < ActiveRecord::Base
 	mount_uploader :image, ImageUploader
+	acts_as_ordered_taggable # Alias for acts_as_taggable_on :tags
+
 
 	searchkick word_start: [:name]
 
