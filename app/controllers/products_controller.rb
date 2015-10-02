@@ -15,6 +15,7 @@ class ProductsController < ApplicationController
     @review = Review.new
     @reviews = Review.where(product_id: @product.id).order('created_at DESC')
     @tags = @product.tag_list
+    @similar_products = @product.find_related_tags
     if @reviews.blank?
       @ease_rating = 0
       @speed_rating = 0

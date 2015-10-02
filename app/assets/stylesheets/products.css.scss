@@ -105,6 +105,7 @@ body {
     // height: 70%;
     // background: white;
     position: relative;
+    overflow: hidden;
     img {
       position: absolute;
       top: 0;
@@ -178,6 +179,11 @@ a.item:nth-child(3n+3) {
   font-size: 16px;
   border: 1px solid #333;
   margin: 20px 5px;
+}
+.tag:hover {
+  text-decoration: none;
+  color: white;
+  background: black;
 }
 
 

@@ -4,6 +4,8 @@
 			<%= image_tag @product.image_url %>
 		</div>
 	</a>
+
+	<%= link_to 'Edit', edit_product_path(@product), class: 'btn btn-link' %>
 	
 	<p class="product__description"><%= @product.description %></p>
 	<div class="col-md-6">
@@ -17,7 +19,7 @@
 	<div class="product-rating">
 		<!-- Overall Rating:  -->
 		<!-- <div class="rating-readonly" data-score= <%= @avg_rating %> ></div> -->
-		   <%= "#{@reviews.length} reviews" %>
+		   <%= "#{@reviews.length} total reviews" %>
 	</div>
 	<div class="tags-container">
 		<% @tags.each do |tag| %>
@@ -27,11 +29,19 @@
 </div>
 
 <div class="container-fluid">
-<div class="row hidden">
-	<%= link_to "Write Review", new_product_review_path(@product), class: "btn btn-primary" %>
-	<%= link_to 'Edit', edit_product_path(@product), class: 'btn btn-link' %> |
-	<%= link_to 'Back', products_path, class: 'btn btn-link' %>
-</div>
+	<div class="similar-products-container row">
+		<h3>Similar Products: </h3>
+		<% @similar_products.each do |product| %>
+			<a href=<%= product_path(product) %> class="item">
+	        
+	        <div class="item__logo"><%= image_tag product.image_url %></div>
+	        <h4><%= product.name %></h4>
+	        <div class="stars-container">
+	          <div class="star-rating" data-score=<%= product.avg_rating %> ></div> <span><%= "#{product.reviews.length} reviews" %></span>
+	        </div>
+	    </a>
+		<% end %>
+	</div>
 
 <!-- <div class="row">
 <h2>Similar/Alternatives</h2>
@@ -87,6 +97,8 @@
 			</tbody>
 		</table>
 	<% end %>
+</div>
+
 </div>
 
 

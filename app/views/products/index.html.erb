@@ -4,20 +4,18 @@
     <h3>Explore the favorite tools, frameworks and products in the software development world.
     <br>Leave reviews and ratings for your fellow hackers.</h3>
   </div>
+  <h3>Best New:</h3>
   <div class="product-container">
-
     <% @products.each do |product| %>
-      
       <a href=<%= product_path(product) %> class="item">
-        
-          <div class="item__logo"><%= image_tag product.image_url %></div>
-          <h4><%= product.name %></h4>
-          <div class="stars-container">
-            <div class="star-rating" data-score=<%= product.avg_rating %> ></div> <span><%= "#{product.reviews.length} reviews" %></span>
-          </div>
-          
+        <div class="item__logo"><%= image_tag product.image_url %></div>
+        <h4><%= product.name %></h4>
+        <div class="stars-container">
+          <div class="star-rating" data-score=<%= product.avg_rating %> ></div> <span><%= "#{product.reviews.length} reviews" %></span>
+        </div>
       </a>
     <% end %>
+    <h3>Trending:</h3>
   </div>
   
 </div>
