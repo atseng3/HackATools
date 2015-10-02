@@ -1,12 +1,17 @@
-<div class="container-fluid">
-  <div class ="jumbotron">
-    <h2>HackATools is the best way to find reviews on development tools.</h2>
-    <h3>Explore the favorite tools, frameworks and products in the software development world.
-    <br>Leave reviews and ratings for your fellow hackers.</h3>
+<div class ="jumbotron">
+  <div class="container-fluid">
+    <h3>HackATools is the best way to find reviews on development tools.</h3>
+    <h4>Explore the favorite tools, frameworks and products in the software development world.
+    <br>Leave reviews and ratings for your fellow hackers.</h4>
   </div>
-  <h3>Best New:</h3>
+</div>
+<div class="container-fluid">
+  <div class="product-category">
+    <h3>Trending:</h3><%= link_to 'see more>>', search_products_path, class: 'see-more' %>
+  </div>
+  
   <div class="product-container">
-    <% @products.each do |product| %>
+    <% @trending_products.each do |product| %>
       <a href=<%= product_path(product) %> class="item">
         <div class="item__logo"><%= image_tag product.image_url %></div>
         <h4><%= product.name %></h4>
@@ -15,7 +20,20 @@
         </div>
       </a>
     <% end %>
-    <h3>Trending:</h3>
+  </div>
+  <div class="product-category">
+    <h3>Best New:</h3><%= link_to 'see more>>', search_products_path, class: 'see-more' %>
+  </div>
+  <div class="product-container">
+    <% @new_products.each do |product| %>
+      <a href=<%= product_path(product) %> class="item">
+        <div class="item__logo"><%= image_tag product.image_url %></div>
+        <h4><%= product.name %></h4>
+        <div class="stars-container">
+          <div class="star-rating" data-score=<%= product.avg_rating %> ></div> <span><%= "#{product.reviews.length} reviews" %></span>
+        </div>
+      </a>
+    <% end %>
   </div>
   
 </div>

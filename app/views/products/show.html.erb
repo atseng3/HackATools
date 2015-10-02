@@ -4,16 +4,17 @@
 			<%= image_tag @product.image_url %>
 		</div>
 	</a>
-
-	<%= link_to 'Edit', edit_product_path(@product), class: 'btn btn-link' %>
+	<% if user_signed_in? && current_user.admin? %>
+		<%= link_to 'Edit', edit_product_path(@product), class: 'btn btn-link product-edit' %>
+	<% end %>
 	
 	<p class="product__description"><%= @product.description %></p>
 	<div class="col-md-6">
-		Ease of becoming master at <%= @product.name %>: 
+		Ease to master: 
 		<div class="rating-readonly" data-score= <%= @ease_rating %> ></div>
 	</div>
 	<div class="col-md-6">
-		Speed for producing awesomeness: 
+		Creates fast: 
 		<div class="rating-readonly" data-score= <%= @speed_rating %> ></div>
 	</div>
 	<div class="product-rating">
@@ -29,76 +30,15 @@
 </div>
 
 <div class="container-fluid">
-	<div class="similar-products-container row">
-		<h3>Similar Products: </h3>
-		<% @similar_products.each do |product| %>
-			<a href=<%= product_path(product) %> class="item">
-	        
-	        <div class="item__logo"><%= image_tag product.image_url %></div>
-	        <h4><%= product.name %></h4>
-	        <div class="stars-container">
-	          <div class="star-rating" data-score=<%= product.avg_rating %> ></div> <span><%= "#{product.reviews.length} reviews" %></span>
-	        </div>
-	    </a>
-		<% end %>
+	<div class="row">
+		<div class="col-md-8">
+			<%= render 'review_list' %>
+		</div>
+
+		<div class="col-md-4">
+			<%= render 'similar_products' %>
+		</div>
 	</div>
-
-<!-- <div class="row">
-<h2>Similar/Alternatives</h2>
-</div>
-
-<div class="row">
-<h2>Works best with</h2>
-</div>
-
-<div class="row">
-<h2>Learn <%= @product.name %></h2>
-</div> -->
-
-<div class="row">
-	<% if @reviews.blank? %>
-		<h3>No reviews yet. Be the first one to write one!</h3>
-		<%= render 'review_form' %>
-	<% else  %>
-		<%= render 'review_form' %>
-		<table class="table">
-			<thead>
-				<tr>
-					<th class="col-md-3"></th>
-					<th class="col-md-9"></th>
-				</tr>
-			</thead>
-			<tbody>
-				<% @reviews.each do |review| %>
-					<tr>
-						<td>
-							<h4><%= "#{review.user.email}" %></h4>
-							<p><%= review.created_at.strftime('%-m/%-d/%-y') %></p>
-						</td>
-						<td>
-							<div class="rating-type">
-								Easy to master: 
-								<div class="rating-readonly" data-score=<%= review.ease_of_use_rating %> ></div>
-							</div>
-							<div class="rating-type">
-								Speed of development: 
-								<div class="rating-readonly" data-score=<%= review.speed_of_dev_rating %> ></div>
-							</div>
-							<p><%= h(review.comment).gsub(/\n/, '<br/>').html_safe %></p>
-							<% if user_signed_in? %>
-								<% if (review.user == current_user) || (current_user.admin?) %>
-									<%= link_to 'Edit', edit_product_review_path(@product, review) %>
-									<%= link_to 'Delete', product_review_path(@product, review), method: :delete %>
-								<% end %>
-							<% end %>
-						</td>
-					</tr>
-				<% end %>
-			</tbody>
-		</table>
-	<% end %>
-</div>
-
 </div>
 
 

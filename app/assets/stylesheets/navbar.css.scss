@@ -1,0 +1,33 @@
+nav {
+	box-shadow: 1px 1px 1px #ccc;
+}
+.categories-nav {
+	overflow:hidden;
+	background: white;
+	.container-fluid {
+		overflow:hidden;
+		margin:0;
+		padding-bottom: 0px;
+		li {
+			text-align:left;
+			float: left;
+			list-style:none;
+			display:block;
+			a {
+				display:block;
+				padding:15px;
+				padding-left:0px;
+				line-height:20px;
+				cursor: pointer;
+				color: #333;
+				border-bottom: 5px solid transparent;
+				transition: all 0.1s ease;
+			}
+			a:hover {
+				border-bottom: 5px solid #333;
+				text-decoration: none;
+				font-weight: 700;
+			}
+		}
+	}
+}

@@ -10,5 +10,6 @@
  *
  *= require_self
  *= require pen/pen.css
+ *= require bootstrap.min
  *= require_tree .
  */

@@ -1,4 +1,4 @@
-<h2>Used <%= @product.name %> for a project? Leave your comments and help others out:</h2>
+<h3>Used <%= @product.name %> for a project? Leave your comments and help others out:</h3>
 
 <%= form_for([@product, @review]) do |f| %>
   <% if @review.errors.any? %>
@@ -14,9 +14,10 @@
     </div>
   <% end %>
   <div class="jumbotron new-review-container">
-    <p>Easy to master: <div class="rating-write__ease"></div>(how easy is it to become pretty decent at this tool?)</p>
+    <div>Easy to master: <div class="rating-write__ease"></div>(learning curve?)</div>
     <br>
-    <p>Creates fast: <div class="rating-write__speed"></div>(how fast does this tool do what you want?)</p>
+    <div>Creates fast: <div class="rating-write__speed"></div>(how fast does this tool do what you want?)</div>
+    <br>
     <div class="form-group new-review-form">
       <%= f.text_area :comment, rows: '6', class: "form-control", id: "html", placeholder: 'Your review helps fellow developers learn more about this tool. How well it works and how much success you’ve had with it.' %>
     </div>

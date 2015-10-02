@@ -1,0 +1,10 @@
+<h3>Similar Products: </h3>
+<% @similar_products.each do |product| %>
+	<a href=<%= product_path(product) %> class="item">
+      <div class="item__logo"><%= image_tag product.image_url %></div>
+      <h4><%= product.name %></h4>
+      <div class="stars-container">
+        <div class="star-rating" data-score=<%= product.avg_rating %> ></div> <span><%= "#{product.reviews.length} reviews" %></span>
+      </div>
+  </a>
+<% end %>

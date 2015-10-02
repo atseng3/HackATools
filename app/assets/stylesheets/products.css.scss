@@ -1,21 +1,20 @@
 // Place all the styles related to the Products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-* {
-	// font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  font-family: "Museo Sans Rounded","HelveticaNeue-Regular","Helvetica Neue Regular","Helvetica Neue",Helvetica,Arial,sans-serif;
+body {
+  font-family: "Lato","HelveticaNeue-Regular","Helvetica Neue Regular","Helvetica Neue",Helvetica,Arial,sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-font-smoothing: antialiased;	
-}
-
-body {
   background-color: #fafafa;
 }
 
 
 .jumbotron {
-	background-color: #eee;
-	border: 1px solid #979797;
+	// background-image: linear-gradient(-157deg, #FFFFFF 0%, #333 38%);
+  background: #333;
+	// border: 1px solid #979797;
+  color: white;
+  padding: 20px 0px;
 	h2 {
       color: #c41200;
       font-weight: bold;
@@ -122,15 +121,18 @@ a.item:nth-child(3n+3) {
 }
 
 .jumbotron.new-review-container {
+  background: #eee;
+  color: #333;
+  padding: 30px 20px;
   p {
     display: inline-block;
   }
   .rating-write__ease {
-    margin: 0px 15px;
+    margin: 0px 10px;
     display: inline-block; 
   }
   .rating-write__speed {
-    margin: 0px 15px;
+    margin: 0px 10px;
     display: inline-block;
   }
 }
@@ -152,6 +154,13 @@ a.item:nth-child(3n+3) {
   text-align: center;
   color: white;
   font-size: 22px;
+  position: relative;
+  .product-edit {
+    color: #333;
+    font-size: 20px;
+    position: absolute;
+    right: 30px;
+  }
 }
 
 .product__description {
@@ -179,12 +188,28 @@ a.item:nth-child(3n+3) {
   font-size: 16px;
   border: 1px solid #333;
   margin: 20px 5px;
+  transition: all 0.2s ease;
 }
 .tag:hover {
   text-decoration: none;
   color: white;
   background: black;
 }
+
+.product-category {
+  position: relative;
+  margin-bottom: 10px;
+  h3 {
+    display: inline-block;
+  }
+  .see-more {
+    color: #999;
+    position: absolute;
+    right: 0;
+    margin-top: 27px;
+  }  
+}
+
 
 
 

@@ -13,13 +13,9 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li><%= link_to "About", pages_about_path %></li>
-        <li><%= link_to "Contact", pages_contact_path %></li>
-      </ul>
       <%= form_tag search_products_path, method: :get, class: "navbar-form navbar-left" do %>
           <p>
-            <%= text_field_tag :search, params[:search], class: "form-control" %>
+            <%= text_field_tag :search, params[:search], class: "form-control", placeholder: 'Search Product' %>
             <%= submit_tag "Search", name: nil, class: "btn btn-default" %>
           </p>
       <% end %>
@@ -38,3 +34,11 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+
+<div class="categories-nav">
+  <ul class="container-fluid">
+    <li><a href="/products/tag/product">PRODUCT</a></li>
+    <li><a href="/products/tag/design">DESIGN</a></li>
+    <li><a href="/products/tag/development">DEVELOPMENT</a></li>
+  </ul>
+</div>

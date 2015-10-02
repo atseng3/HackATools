@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.raty
+//= require bootstrap.min
 //= require turbolinks
 //= require pen/pen
 //= require pen/markdown
