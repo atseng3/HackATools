@@ -1,5 +1,5 @@
 Hackatools::Application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "callbacks"}
   resources :products do 
     collection do
       get 'search'

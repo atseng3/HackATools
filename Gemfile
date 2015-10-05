@@ -41,6 +41,9 @@ gem 'mini_magick'
 
 # Users
 gem 'devise'
+# Twitter LogIn
+gem 'omniauth-twitter', '~> 1.1.0'
+gem 'twitter', '~> 5.13.0'
 
 # For Search, from Instacart
 gem 'searchkick'
