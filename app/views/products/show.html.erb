@@ -54,6 +54,13 @@
     path: 'https://s3.amazonaws.com/yelpdemo/stars',
     scoreName: 'review[ease_of_use_rating]'
   });
+  $('.review-rating').raty({
+		path: 'https://s3.amazonaws.com/hackatools/stars',
+		readOnly: true,
+		score: function() {
+			return $(this).attr('data-score');
+		}
+	});
   $('.rating-write__speed').raty({
     path: 'https://s3.amazonaws.com/yelpdemo/stars',
     scoreName: 'review[speed_of_dev_rating]'

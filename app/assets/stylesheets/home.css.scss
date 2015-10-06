@@ -1,0 +1,111 @@
+.jumbotron {
+	// background-image: linear-gradient(-157deg, #FFFFFF 0%, #333 38%);
+  background: #333;
+	// border: 1px solid #979797;
+  color: white;
+  padding: 20px 0px;
+	h2 {
+      color: #c41200;
+      font-weight: bold;
+	}
+  .new-review__star {
+    display: inline-block;
+  }
+}
+
+.container-fluid {
+    padding: 5px 171px;
+}
+
+/////////// for stars
+
+.stars-container {
+  padding: 0px 0px 10px 10px;
+}
+.rating-readonly {
+  display: inline-block;
+}
+
+/////////// for results
+
+.product-category {
+  position: relative;
+  margin-bottom: 10px;
+  h3 {
+    display: inline-block;
+  }
+  .see-more {
+    color: #999;
+    position: absolute;
+    right: 0;
+    margin-top: 27px;
+  }  
+}
+
+/////////// for products
+
+// @media (min-width: 736px) {
+  // .item__overlay {
+  //   background-color: rgba(0,0,0,0.3);
+  //   background: transparent;
+  // }
+  .items-row {
+    margin-bottom: 30px;
+  }
+  a.item:hover {
+    color: #5f5f5f;
+    text-decoration: none;
+    box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+    transform: scale(1.05);
+    // border: 1px solid #2a6496;
+  }
+  a.item {
+    margin-right: 30px;
+    margin-bottom: 30px;
+    width: 290px;
+    display: inline-block;
+    text-align: left;
+    border: 1px solid #CCC;
+    border-radius: 4px;
+    background: white;
+    color: #5f5f5f;
+    transition: all 0.2s ease;
+    h4 {
+      padding: 10px;
+    }
+    .stars {
+      padding-left: 10px;
+      float: left;
+    }
+    .paid-free {
+      padding-right: 10px;
+      float: right;
+    }
+  }
+  .item:last-child {
+    margin-right: 0;
+  }
+
+  .item__logo {
+    width: 100%;
+    // border-radius: 4px;
+    border-bottom: 1px solid #CCC;
+    height: 200px;
+    // height: 70%;
+    // background: white;
+    position: relative;
+    overflow: hidden;
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+    }
+  }
+// }
+
+a.item:nth-child(3n+3) {  
+  margin-right: 0px;
+}

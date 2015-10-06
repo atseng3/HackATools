@@ -1,10 +1,22 @@
 <h3>Similar Products: </h3>
+<div class="similar-products">
 <% @similar_products.each do |product| %>
-	<a href=<%= product_path(product) %> class="item">
-      <div class="item__logo"><%= image_tag product.image_url %></div>
-      <h4><%= product.name %></h4>
-      <div class="stars-container">
-        <div class="star-rating" data-score=<%= product.avg_rating %> ></div> <span><%= "#{product.reviews.length} reviews" %></span>
-      </div>
-  </a>
+	<div class="media">
+	  <div class="media-left">
+	    <a href="#">
+	      <img class="media-object" src=<%= product.image_url %> alt="...">
+	    </a>
+	  </div>
+	  <div class="media-body">
+	    <h4 class="media-heading"><%= product.name %></h4>
+	    <br>
+	    <div class="similar__stars-container">
+	      <div class="review-rating" data-score=<%= product.avg_rating %> ></div> <div class="review-count"><%= "#{product.reviews.length} reviews" %></div>
+	    </div>
+	  </div>
+	</div>
 <% end %>
+</div>
+
+
+

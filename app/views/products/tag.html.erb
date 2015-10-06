@@ -1,9 +1,13 @@
 <div class="container-fluid">
   <div class="tags-container">Product With Tags: <div class="tag"><%= @tag %></div></div>
   <div class="item-container">
-  	<% @products.each do |product| %>
-  	  <a href=<%= product_path(product) %> class="item"><div class="item__logo"><%= image_tag product.image_url %></div><h4><%= product.name %></h4><div class="stars-container"><div class="star-rating" data-score=<%= product.avg_rating %> ></div> <span><%= "#{product.reviews.length} reviews" %></span></div></a>
-  	<% end %>
+    <% if @products.empty? %>
+      <h3>Oops! There's no product found! Would you like to add one?</h3>
+    <% else %>
+      <% @products.each do |product| %>
+        <a href=<%= product_path(product) %> class="item"><div class="item__logo"><%= image_tag product.image_url %></div><h4><%= product.name %></h4><div class="stars-container"><div class="star-rating" data-score=<%= product.avg_rating %> ></div> <span><%= "#{product.reviews.length} reviews" %></span></div></a>
+      <% end %>
+    <% end %>
   </div>
 </div>
 

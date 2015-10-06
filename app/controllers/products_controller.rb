@@ -6,8 +6,8 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @new_products = Product.all.order('created_at DESC').limit(3)
-    @trending_products = Product.all.order('created_at ASC').limit(3)
+    @new_products = Product.all.order('created_at DESC')
+    @trending_products = Product.all.order('created_at ASC')
   end
 
   # GET /products/1

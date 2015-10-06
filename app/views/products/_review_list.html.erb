@@ -3,41 +3,43 @@
 	<%= render 'review_form' %>
 <% else  %>
 	<%= render 'review_form' %>
-	<table class="table">
-		<thead>
-			<tr>
-				<th class="col-md-3"></th>
-				<th class="col-md-9"></th>
-			</tr>
-		</thead>
-		<tbody>
-			<% @reviews.each do |review| %>
+	<div class="review-list">
+		<table class="table">
+			<thead>
 				<tr>
-					<td>
-						<h4><%= "#{review.user.email}" %></h4>
-						<p><%= review.created_at.strftime('%-m/%-d/%-y') %></p>
-					</td>
-					<td>
-						<div class="rating-type">
-							Easy to master: 
-							<div class="rating-readonly" data-score=<%= review.ease_of_use_rating %> ></div>
-						</div>
-						<div class="rating-type">
-							Creates fast: &nbsp;&nbsp;&nbsp;&nbsp;
-							<div class="rating-readonly" data-score=<%= review.speed_of_dev_rating %> ></div>
-						</div>
-						<br>
-						<br>
-						<p><%= h(review.comment).gsub(/\n/, '<br/>').html_safe %></p>
-						<% if user_signed_in? %>
-							<% if (review.user == current_user) || (current_user.admin?) %>
-								<%= link_to 'Edit', edit_product_review_path(@product, review) %>
-								<%= link_to 'Delete', product_review_path(@product, review), method: :delete %>
-							<% end %>
-						<% end %>
-					</td>
+					<th class="col-md-3">All Reviews (<%= @reviews.count %>)</th>
+					<th class="col-md-9"></th>
 				</tr>
-			<% end %>
-		</tbody>
-	</table>
+			</thead>
+			<tbody>
+				<% @reviews.each do |review| %>
+					<tr>
+						<td>
+							<h4><%= "#{review.user.email}" %></h4>
+							<p><%= review.created_at.strftime('%-m/%-d/%-y') %></p>
+						</td>
+						<td>
+							<div class="rating-type">
+								Easy to master: 
+								<div class="rating-readonly" data-score=<%= review.ease_of_use_rating %> ></div>
+							</div>
+							<div class="rating-type">
+								Creates fast: &nbsp;&nbsp;&nbsp;&nbsp;
+								<div class="rating-readonly" data-score=<%= review.speed_of_dev_rating %> ></div>
+							</div>
+							<br>
+							<br>
+							<p><%= h(review.comment).gsub(/\n/, '<br/>').html_safe %></p>
+							<% if user_signed_in? %>
+								<% if (review.user == current_user) || (current_user.admin?) %>
+									<%= link_to 'Edit', edit_product_review_path(@product, review) %>
+									<%= link_to 'Delete', product_review_path(@product, review), method: :delete %>
+								<% end %>
+							<% end %>
+						</td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
 <% end %>

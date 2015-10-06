@@ -1,4 +1,4 @@
-<h3>Used <%= @product.name %> for a project? Leave your comments and help others out:</h3>
+<h3>Used <%= @product.name %> for a project? How was it?</h3>
 
 <%= form_for([@product, @review]) do |f| %>
   <% if @review.errors.any? %>
