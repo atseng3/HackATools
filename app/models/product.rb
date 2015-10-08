@@ -6,6 +6,10 @@ class Product < ActiveRecord::Base
 	searchkick word_start: [:name]
 
 	has_many :reviews
+
+	has_many :watchlists
+	has_many :users, through: :watchlists, source: :user
+
 	validates :name, :website, presence: true
 	validates :website, format: { with: /\Ahttps?:\/\/.*\z/,
 	  message: "must start with http:// or https://" }

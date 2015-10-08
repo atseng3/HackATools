@@ -4,7 +4,11 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:twitter]
+  
   has_many :reviews, dependent: :destroy
+
+  has_many :watchlists
+  has_many :watchlist_products, :through => :watchlists, source: :product
 
   def self.from_omniauth(auth)
 	  user = where(provider: auth.provider, uid: auth.uid).first_or_create

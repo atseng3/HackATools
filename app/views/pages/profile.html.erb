@@ -2,6 +2,14 @@
 
 <%= current_user.email %>
 
+<h3>Watchlist</h3>
+<ul>
+<% current_user.watchlist_products.each do |product| %>
+	<li><%= product.name %></li>
+<% end %>
+</ul>
+
+<h3>Reviews</h3>
 <ul>
 <% @reviews.each do |review| %>
 	<li><%= review.product.name %>: <%= review.comment %></li>

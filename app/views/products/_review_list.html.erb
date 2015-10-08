@@ -2,8 +2,10 @@
 	<h3>No reviews yet. Be the first one to write one!</h3>
 	<%= render 'review_form' %>
 <% else  %>
-	<%= render 'review_form' %>
-	<div class="review-list">
+	<div class="card-section new-review-placeholder">
+		<div><div class="profile-pic" style="width: 60px;height:60px;border-radius:150px;background:#CCC;display:inline-block;"></div><div class="rating-write" style="display:inline-block;height:60px;line-height:60px;vertical-align:top;margin:0px 20px;"></div><span style="height:60px;line-height:65px;vertical-align:top;font-size:16px;font-weight:600;">Select your rating.</span></div>
+	</div>
+	<div class="review-list card-section">
 		<table class="table">
 			<thead>
 				<tr>
@@ -19,14 +21,10 @@
 							<p><%= review.created_at.strftime('%-m/%-d/%-y') %></p>
 						</td>
 						<td>
-							<div class="rating-type">
-								Easy to master: 
-								<div class="rating-readonly" data-score=<%= review.ease_of_use_rating %> ></div>
+							<div>
+								<div class="rating-readonly" data-score=<%= review.rating %> ></div>
 							</div>
-							<div class="rating-type">
-								Creates fast: &nbsp;&nbsp;&nbsp;&nbsp;
-								<div class="rating-readonly" data-score=<%= review.speed_of_dev_rating %> ></div>
-							</div>
+							
 							<br>
 							<br>
 							<p><%= h(review.comment).gsub(/\n/, '<br/>').html_safe %></p>
@@ -42,4 +40,5 @@
 			</tbody>
 		</table>
 	</div>
+	<%= render 'review_form' %>
 <% end %>

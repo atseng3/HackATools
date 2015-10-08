@@ -9,17 +9,9 @@
 	<% end %>
 	
 	<p class="product__description"><%= @product.description %></p>
-	<div class="col-md-6">
-		Ease to master: 
-		<div class="rating-readonly" data-score= <%= @ease_rating %> ></div>
-	</div>
-	<div class="col-md-6">
-		Creates fast: 
-		<div class="rating-readonly" data-score= <%= @speed_rating %> ></div>
-	</div>
+
 	<div class="product-rating">
-		<!-- Overall Rating:  -->
-		<!-- <div class="rating-readonly" data-score= <%= @avg_rating %> ></div> -->
+		<div class="rating-readonly" data-score= <%= @avg_rating %> ></div>
 		   <%= "#{@reviews.length} total reviews" %>
 	</div>
 	<div class="tags-container">
@@ -30,6 +22,29 @@
 </div>
 
 <div class="container-fluid">
+
+	<div class="card-section" id="accordion" role="tablist" aria-multiselectable="true">
+	  <div>
+	    <div role="tab" id="headingOne">
+	    	<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne" style="text-decoration:none;color:#333;">
+		      <h3 style="margin:10px 0px;">
+	          Product Description
+		      </h3>
+	      </a>
+	    </div>
+	    <div id="collapseOne" class="collapse out" role="tabpanel" aria-labelledby="headingOne">
+	      <div class="">
+	        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+
+
+
+
+
 	<div class="row">
 		<div class="col-md-8">
 			<%= render 'review_list' %>
@@ -50,10 +65,14 @@
 			return $(this).attr('data-score');
 		}
 	});
-	$('.rating-write__ease').raty({
+	$('.rating-write').raty({
     path: 'https://s3.amazonaws.com/yelpdemo/stars',
     scoreName: 'review[ease_of_use_rating]'
   });
+	// $('.rating-write__ease').raty({
+ //    path: 'https://s3.amazonaws.com/yelpdemo/stars',
+ //    scoreName: 'review[ease_of_use_rating]'
+ //  });
   $('.review-rating').raty({
 		path: 'https://s3.amazonaws.com/hackatools/stars',
 		readOnly: true,
@@ -61,8 +80,8 @@
 			return $(this).attr('data-score');
 		}
 	});
-  $('.rating-write__speed').raty({
-    path: 'https://s3.amazonaws.com/yelpdemo/stars',
-    scoreName: 'review[speed_of_dev_rating]'
-  });
+  // $('.rating-write__speed').raty({
+  //   path: 'https://s3.amazonaws.com/yelpdemo/stars',
+  //   scoreName: 'review[speed_of_dev_rating]'
+  // });
 </script>
