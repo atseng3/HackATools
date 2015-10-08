@@ -7,20 +7,22 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <main>
+    <%= render 'layouts/navbar' %>
 
-<%= render 'layouts/navbar' %>
-
-<% flash.each do |name, msg| %>
-<div class="container-fluid">
-    <% if msg.is_a?(String) %>
-      <div class="alert alert-<%= name == "notice" ? "success" : "danger" %> alert-dismissable">
-        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+    <% flash.each do |name, msg| %>
+    <div class="container-fluid">
+        <% if msg.is_a?(String) %>
+          <div class="alert alert-<%= name == "notice" ? "success" : "danger" %> alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <%= content_tag :div, msg, :id => "flash_#{name}" %>
+          </div>
+        <% end %>
       </div>
-    <% end %>
-  </div>
-<% end %> 
-<%= yield %>
-<%= render 'layouts/footer' %>
+    <% end %> 
+    <%= yield %>
+    
+  </main>
+  <%= render 'layouts/footer' %>
 </body>
 </html>

@@ -2,12 +2,32 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import '_variables';
+html {
+  height: 100%
+}
 body {
   font-family: "Lato","HelveticaNeue-Regular","Helvetica Neue Regular","Helvetica Neue",Helvetica,Arial,sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-font-smoothing: antialiased;	
   background-color: #f1f1f1;
+  // height: 100vh;
+  // position: relative;
+  height: 100%;
 }
+main {
+  min-height: 100%;
+  margin-bottom: -88px;
+  padding-bottom: 88px;
+}
+// main:after {
+//   contern: '';
+//   display: block;
+//   height: 88px;
+// }
+.footer {
+  height: 88px;
+}
+
 
 .card-section {
   background: white;
