@@ -1,0 +1,15 @@
+.profile-hero {
+	padding: 40px;
+	// height: 80px;
+	width: 100%;
+	background-image: linear-gradient(-135deg, #444444 0%, #F5515F 100%);
+	text-align: center;
+	color: white;
+	font-size: 20px;
+	.profile__image {
+		border-radius: 150px;
+		margin: auto;
+		width: 100px;
+		display: block;
+	}
+}

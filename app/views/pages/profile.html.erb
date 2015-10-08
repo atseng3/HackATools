@@ -1,17 +1,28 @@
-<h1>User Profile Page</h1>
+<div class="profile-hero">
+	<%= image_tag current_user.profile_image, class: 'profile__image' %>
+	<%= '@'+current_user.name %>
+	<div class="row">
+		<div class="col-md-6">Reviewed 23 Tools</div>
+		<div class="col-md-6">Recommends 10 Tools</div>
+	</div>
+	
+</div>
+<div class="container-fluid">
+	<div class="card-section">
+		<h3>Watchlist</h3>	
+		<ul>
+			<% current_user.watchlist_products.each do |product| %>
+				<li><%= product.name %></li>
+			<% end %>
+		</ul>
+	</div>
 
-<%= current_user.email %>
 
-<h3>Watchlist</h3>
-<ul>
-<% current_user.watchlist_products.each do |product| %>
-	<li><%= product.name %></li>
-<% end %>
-</ul>
 
-<h3>Reviews</h3>
-<ul>
-<% @reviews.each do |review| %>
-	<li><%= review.product.name %>: <%= review.comment %></li>
-<% end %>
-</ul>
+	<h3>Reviews</h3>
+	<ul>
+	<% @reviews.each do |review| %>
+		<li><%= review.product.name %>: <%= review.comment %></li>
+	<% end %>
+	</ul>
+</div>
